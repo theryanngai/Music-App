@@ -1,0 +1,20 @@
+<h1>Edit this Artist</h1>
+
+<form action="<%= band_url %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+
+<input 
+	name="authenticity_token"
+	type="hidden"
+	value="<%= form_authenticity_token %>">
+
+<label for="band_name">Name</label>
+	<input name="band[name]" id="band_name" value="<%= @band.name %>">
+<br><br>
+
+<input type="submit" value="Submit!">
+</form>
+
+<br><br>
+<%= link_to "<< Back to Band", band_url(@band) %>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<% if flash[:alerts]%>
+	<b><i><%=flash[:alerts]%><br></b></i>
+<%end%>
+
+<% if current_user %>
+	You are logged in as: <%= current_user.email %><br>
+	<%= button_to "Log Out", session_url, method: :delete %>
+<% end %>
+
+<head>
+  <title>MusicApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

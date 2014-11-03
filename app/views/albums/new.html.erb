@@ -1,0 +1,36 @@
+<h1>Create New Album</h1>
+
+<form action="<%= albums_url %>" method="post">
+
+<input 
+	name="authenticity_token"
+	type="hidden"
+	value="<%= form_authenticity_token %>">
+
+<label for="album_name">Name</label>
+	<input name="album[name]" id="album_name" value=<%=@album.name%>>
+
+<br>
+
+<label for="album_band_id">Select Artist:</label>
+	<select name="album[band_id]", id="album_band_id">
+		<% Band.all.each do |band| %>
+			<option value = <%=band.id%> 
+			<%="selected" if band.id.to_s == params[:band_id]%>>
+			<%= band.name %></option>
+		<% end %>
+	</select>
+<br>
+
+<label for="recorded_at">Recording Medium:</label>
+<br>
+	<input type="radio" name="album[recorded_at]" value="studio" 
+		<%="checked" if @album.recorded_at == 'studio'%>>Studio<br>
+	<input type="radio" name="album[recorded_at]" value="live" 
+		<%="checked" if @album.recorded_at == 'live'%>>Live<br>
+<br><br>
+
+<input type="submit" value="Submit!">
+</form>
+<br><br>
+<%= link_to "<< Back to Artist", band_url(params[:band_id]) %>

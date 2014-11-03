@@ -1,0 +1,19 @@
+<h1><%= @track.name %></h1>
+<h3>on Album: <%= link_to @track.album.name, 
+		album_url(@track.album) %></h3>
+
+
+<b>TRACK TYPE:</b> <%= @track.track_type.capitalize %>
+<br>
+<b>LYRICS:</b> <%= @track.lyrics %>
+
+<br><br>
+
+<%= render 'notes/form', object: @track %>
+
+<br><br>
+<%= link_to "Edit this Track", edit_track_url(@track) %>
+<br>
+<%= link_to "<< Back to Album", album_url(@track.album) %>
+<br><br>
+<%= button_to "Delete Track", @track, method: 'delete' %>
